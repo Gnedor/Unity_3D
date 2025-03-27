@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class SpriteController : MonoBehaviour
 {
-    public Camera _mainCamera;
+    private Camera _mainCamera;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _mainCamera = GameObject.Find("First Person Camera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
