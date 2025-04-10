@@ -17,3 +17,6 @@ public class SkelettController : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
     }
 }
+
+// gör så att freeze rotation x stängs av när de dör, gör så att de lägger sig ner
+// gör så att de kan bli skjutna, gör så att de kan attackera
