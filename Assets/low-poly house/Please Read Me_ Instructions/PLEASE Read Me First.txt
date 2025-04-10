@@ -1,0 +1,15 @@
+Hi There,
+
+Please follow these instructions to upload the model in Blender:
+
+1. Open Blender and upload the model.
+2. Select the model by clicking on it.
+3. Follow the attached images for guidance on the next steps.
+
+If you have any questions or need further assistance, feel free to reach out!
+
+Best regards, 
+ 
+GameAssetsPro
+
+My itch.io WebSite: " https://gameassetspro.itch.io "

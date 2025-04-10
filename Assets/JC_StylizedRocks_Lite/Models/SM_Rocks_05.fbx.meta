@@ -1,12 +1,5 @@
 fileFormatVersion: 2
 guid: feca77a69003e5e44b60b633092f9d00
-AssetOrigin:
-  serializedVersion: 1
-  productId: 271334
-  packageName: Stylized Low Poly Rocks
-  packageVersion: 1.0
-  assetPath: Assets/JC_StylizedRocks_Lite/Models/SM_Rocks_05.fbx
-  uploadId: 629493
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -23,6 +16,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -40,7 +35,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 2
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -95,7 +90,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.02
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
@@ -112,3 +107,10 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 271334
+  packageName: Stylized Low Poly Rocks
+  packageVersion: 1.0
+  assetPath: Assets/JC_StylizedRocks_Lite/Models/SM_Rocks_05.fbx
+  uploadId: 629493
