@@ -613,6 +613,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3909719688433007430, guid: 51b439b06c711ac4eb3ae09617a44642, type: 3}
   m_PrefabInstance: {fileID: 624275758976066371}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1455129242 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 142909561697584699, guid: 51b439b06c711ac4eb3ae09617a44642, type: 3}
+  m_PrefabInstance: {fileID: 624275758976066371}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455129241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e7611dc2a71724bb16661d26c87bfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1497588658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -802,7 +813,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_animator: {fileID: 1746094028}
-  weapons: []
+  weapons:
+  - {fileID: 1455129242}
 --- !u!95 &1746094028
 Animator:
   serializedVersion: 7
@@ -901,9 +913,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 124991110482638393}
     m_Modifications:
+    - target: {fileID: 142909561697584699, guid: 51b439b06c711ac4eb3ae09617a44642, type: 3}
+      propertyPath: fireRate
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 932346455050132336, guid: 51b439b06c711ac4eb3ae09617a44642, type: 3}
       propertyPath: m_Name
       value: Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 3915176441721789266, guid: 51b439b06c711ac4eb3ae09617a44642, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8849539983976605787, guid: 51b439b06c711ac4eb3ae09617a44642, type: 3}
       propertyPath: m_LocalPosition.x
