@@ -20,11 +20,7 @@ public class SpriteController : MonoBehaviour
         Vector3 cameraPosition = _mainCamera.transform.position;
         cameraPosition.y = transform.position.y;
 
-        // Calculate target rotation
-        Quaternion targetRotation = Quaternion.LookRotation(cameraPosition - transform.position);
-        targetRotation *= Quaternion.Euler(0f, 180f, 0f); // Flip the sprite
-
-        // Smoothly rotate towards the target rotation
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 2f);
-    }
+        transform.LookAt(cameraPosition);
+        transform.Rotate(0f, 180f, 0f);
+    } 
 }
