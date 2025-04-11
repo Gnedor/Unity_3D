@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        WeaponDatabase currentWeapon = weapons[weaponIndex];
+        currentWeapon = weapons[weaponIndex];
     }
     void Update()
     {
