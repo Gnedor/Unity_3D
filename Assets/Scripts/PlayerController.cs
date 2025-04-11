@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        Debug.Log("Gaming");
         if (shotsFired >= currentWeapon.maxAmmo || Player.ammo > 0) {
             isShooting = true;
             player_animator.SetBool("Shooting", true);
@@ -76,13 +75,7 @@ public class PlayerController : MonoBehaviour
                 GameObject hitObject = hit.collider.gameObject;
                 EnemyScript stats = hitObject.GetComponent<EnemyScript>();
                 
-
-                if (stats.health > 0){
-                    stats.health -= currentWeapon.damage;
-                    if (stats.health < 0) {
-                        stats.health = 0;
-                    }
-                }
+                stats.GetHit(currentWeapon.damage);
             }
         }
     }
