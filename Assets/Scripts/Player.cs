@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static int ammo = 100000000;
+    public static int ammo = 5;
     public int health;
-    public GameObject weapon;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

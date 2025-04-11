@@ -1,6 +1,4 @@
 using System.Collections; // Needed for IEnumerator
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -8,15 +6,9 @@ public class PlayerController : MonoBehaviour
     public Animator player_animator;
     private bool isReloading = false;
     private bool isShooting = false;
-    public List<WeaponDatabase> weapons = new List<WeaponDatabase>();
-    private WeaponDatabase currentWeapon;
-    private int weaponIndex = 0;
-    private int shotsFired = 0;
+    private float reloadTime = 0.4f;
+    private float shootCooldown = 0.3f;
 
-    void Start()
-    {
-        WeaponDatabase currentWeapon = weapons[weaponIndex];
-    }
     void Update()
     {
         if (Input.GetButtonDown("Fire1") && !isReloading && !isShooting && Player.ammo > 0)
@@ -32,20 +24,19 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        if (shotsFired >= currentWeapon.maxAmmo || Player.ammo > 0) {
-            isShooting = true;
-            player_animator.SetBool("Shooting", true);
+        isShooting = true;
+        player_animator.SetBool("Shooting", true);
 
-            ShootRay();
-            
-            // Wait for shoot cooldown
-            yield return new WaitForSeconds(currentWeapon.fireRate);
+        ShootRay();
+        
+        // Wait for shoot cooldown
+        yield return new WaitForSeconds(shootCooldown);
 
-            player_animator.SetBool("Shooting", false);
-            isShooting = false;
-            Player.ammo -= 1;
-            shotsFired += 1;
-        }
+        player_animator.SetBool("Shooting", false);
+        isShooting = false;
+        Player.ammo -= 1;
+
+
     }
 
     IEnumerator Reload()
@@ -54,13 +45,12 @@ public class PlayerController : MonoBehaviour
         player_animator.SetBool("Reloading", true);
         
         // Wait for reload animation time
-        yield return new WaitForSeconds(currentWeapon.reloadTime);
+        yield return new WaitForSeconds(reloadTime);
         
         player_animator.SetBool("Reloading", false);
         isReloading = false;
 
         Player.ammo = 5;
-        shotsFired = 0;
     }
 
     void ShootRay(){
@@ -70,19 +60,7 @@ public class PlayerController : MonoBehaviour
 
         if(Physics.Raycast(myRay, out hit))
         {
-            Debug.Log("Hit: " + hit.collider.tag);
-            if (hit.collider.tag == "Enemy"){
-                GameObject hitObject = hit.collider.gameObject;
-                EnemyScript stats = hitObject.GetComponent<EnemyScript>();
-                
-
-                if (stats.health > 0){
-                    stats.health -= currentWeapon.damage;
-                    if (stats.health < 0) {
-                        stats.health = 0;
-                    }
-                }
-            }
+        Debug.Log("Hit: " + hit.collider.name);
         }
     }
 }
