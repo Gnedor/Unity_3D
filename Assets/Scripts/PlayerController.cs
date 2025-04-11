@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        WeaponDatabase currentWeapon = weapons[weaponIndex];
+        currentWeapon = weapons[weaponIndex];
     }
     void Update()
     {
@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Shoot()
     {
+        Debug.Log("Gaming");
         if (shotsFired >= currentWeapon.maxAmmo || Player.ammo > 0) {
             isShooting = true;
             player_animator.SetBool("Shooting", true);
