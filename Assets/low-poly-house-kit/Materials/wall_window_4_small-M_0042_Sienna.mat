@@ -121,7 +121,15 @@ Material:
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &921145855867679404
+<<<<<<< Updated upstream
+--- !u!114 &4089168970656892642
+=======
+<<<<<<< Updated upstream
+--- !u!114 &5703755099282253153
+=======
+--- !u!114 &8467381984703239923
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
