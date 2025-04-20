@@ -298,8 +298,6 @@ PrefabInstance:
       addedObject: {fileID: 124991110482638392}
   m_SourcePrefab: {fileID: 100100000, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 --- !u!1 &130221936
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,10 +305,6 @@ GameObject:
   m_PrefabInstance: {fileID: 0}
 =======
 <<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 =======
 --- !u!1001 &124293407
 PrefabInstance:
@@ -927,19 +921,9 @@ PrefabInstance:
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2291ffa286ad78c43bc3645c87003a1e, type: 3}
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 --- !u!1001 &613921320
 =======
 <<<<<<< Updated upstream
-=======
---- !u!1001 &718832143
->>>>>>> Stashed changes
-=======
-=======
---- !u!1001 &718832143
->>>>>>> Stashed changes
-=======
 =======
 --- !u!1001 &718832143
 >>>>>>> Stashed changes
@@ -948,8 +932,6 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     m_TransformParent: {fileID: 130221937}
     m_Modifications:
@@ -1013,10 +995,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
 =======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -4216859302048453862, guid: ed3d931d0cd6f8a43a2ba4196edde566, type: 3}
@@ -1074,35 +1052,17 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: ed3d931d0cd6f8a43a2ba4196edde566, type: 3}
       propertyPath: m_Name
       value: wall_window_2 (1)
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1694449805434718, guid: 6f1a7354265853f44b0ed5e2e43676ad, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1455129243}
   m_SourcePrefab: {fileID: 100100000, guid: 6f1a7354265853f44b0ed5e2e43676ad, type: 3}
-=======
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ed3d931d0cd6f8a43a2ba4196edde566, type: 3}
->>>>>>> Stashed changes
->>>>>>> Stashed changes
-=======
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ed3d931d0cd6f8a43a2ba4196edde566, type: 3}
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 =======
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed3d931d0cd6f8a43a2ba4196edde566, type: 3}
@@ -1668,12 +1628,6 @@ PrefabInstance:
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d92f09f64cd1a6478ac2e8692d2af2b, type: 3}
 >>>>>>> Stashed changes
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
 --- !u!1 &1593727857880255 stripped
 GameObject:

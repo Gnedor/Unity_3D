@@ -1,12 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
---- !u!114 &-3215226854895887297
-=======
---- !u!114 &-7662948318336115515
->>>>>>> Stashed changes
+--- !u!114 &-5924117684633947732
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19,7 +13,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 9
->>>>>>> Stashed changes
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -37,12 +30,8 @@ Material:
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-<<<<<<< Updated upstream
-  stringTagMap: {}
-=======
   stringTagMap:
     RenderType: Opaque
->>>>>>> Stashed changes
   disabledShaderPasses:
   - MOTIONVECTORS
   m_LockedProperties: 
@@ -140,11 +129,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.854902, g: 0.647059, b: 0.12549, a: 1}
-<<<<<<< Updated upstream
-    - _Color: {r: 0.854902, g: 0.647059, b: 0.12549, a: 1}
-=======
     - _Color: {r: 0.854902, g: 0.647059, b: 0.12548995, a: 1}
->>>>>>> Stashed changes
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
