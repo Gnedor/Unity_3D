@@ -1,0 +1,14 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl M_0024_OrangeRed
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 0.270588 0.000000
+Ks 0.330000 0.330000 0.330000
+
+newmtl M_0042_Sienna
+Ka 0.000000 0.000000 0.000000
+Kd 0.627451 0.321569 0.176471
+Ks 0.330000 0.330000 0.330000
+
