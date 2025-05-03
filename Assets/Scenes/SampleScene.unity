@@ -774,6 +774,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 186706395}
+  - component: {fileID: 186706397}
+  - component: {fileID: 186706398}
   m_Layer: 0
   m_Name: Hus
   m_TagString: Untagged
@@ -828,6 +830,48 @@ Transform:
   - {fileID: 1791725572}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 165, z: 0}
+--- !u!65 &186706397
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186706394}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 13.5, y: 7.77, z: 13.9}
+  m_Center: {x: 0.3, y: -3, z: -7.82}
+--- !u!65 &186706398
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186706394}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.57, y: 3.52, z: 5.04}
+  m_Center: {x: 0.34, y: -5.1, z: -17.3}
 --- !u!1001 &197318390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2439,7 +2483,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.870039, y: 4.12, z: 12.89}
+  m_Size: {x: 11.16, y: 4.12, z: 12.89}
   m_Center: {x: -3.4799972, y: 2, z: 8.21}
 --- !u!65 &520301789
 BoxCollider:
@@ -7134,6 +7178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1976581188}
+  - component: {fileID: 1976581189}
   m_Layer: 0
   m_Name: Hus2
   m_TagString: Untagged
@@ -7181,6 +7226,27 @@ Transform:
   - {fileID: 703976575}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
+--- !u!65 &1976581189
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976581187}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 14.5, y: 4.22, z: 12.89}
+  m_Center: {x: 0, y: 2, z: -8.2}
 --- !u!4 &1989714988 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 17358d85256926e44b03ad2d339fb67b, type: 3}
