@@ -3,10 +3,11 @@ using UnityEngine;
 public class SkelettController : MonoBehaviour
 {
     private GameObject player;
-    public float speed = 1.5f;
+    private EnemyScript enemyScript;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        enemyScript = GetComponent<EnemyScript>();
         player = GameObject.FindWithTag ("Player");
     }
 
@@ -14,7 +15,7 @@ public class SkelettController : MonoBehaviour
     void Update()
     {
         Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemyScript.speed * Time.deltaTime);
     }
 }
 

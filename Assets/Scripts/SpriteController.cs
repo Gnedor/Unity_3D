@@ -1,11 +1,14 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpriteController : MonoBehaviour
 {
     private Camera _mainCamera;
+    private EnemyScript mainScript;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        mainScript = GetComponent<EnemyScript>();
         _mainCamera = GameObject.Find("First Person Camera").GetComponent<Camera>();
     }
 
@@ -17,14 +20,16 @@ public class SpriteController : MonoBehaviour
 
     private void LateUpdate()
     {
-        Vector3 cameraPosition = _mainCamera.transform.position;
-        cameraPosition.y = transform.position.y;
+        if (!mainScript.dead){
+            Vector3 cameraPosition = _mainCamera.transform.position;
+            cameraPosition.y = transform.position.y;
 
-        // Calculate target rotation
-        Quaternion targetRotation = Quaternion.LookRotation(cameraPosition - transform.position);
-        targetRotation *= Quaternion.Euler(0f, 180f, 0f); // Flip the sprite
+            // Calculate target rotation
+            Quaternion targetRotation = Quaternion.LookRotation(cameraPosition - transform.position);
+            targetRotation *= Quaternion.Euler(0f, 180f, 0f); // Flip the sprite
 
-        // Smoothly rotate towards the target rotation
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 2f);
+            // Smoothly rotate towards the target rotation
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 2f);
+        }
     }
 }
