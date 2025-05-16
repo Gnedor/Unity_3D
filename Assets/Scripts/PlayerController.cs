@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
+using UnityEditor.Callbacks;
+using UnityEngine.Animations;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,24 +15,23 @@ public class PlayerController : MonoBehaviour
     public List<WeaponDatabase> weapons = new List<WeaponDatabase>();
     private WeaponDatabase currentWeapon;
     private int weaponIndex = 0;
-    private int shotsFired = 0;
     public TextMeshProUGUI ammoCounter;
-    LineRenderer shotLine;
     Transform weapon;
     float beamVisibleTime;
+    public GameObject bulletPrefab;
+
     void Start()
     {
         currentWeapon = weapons[weaponIndex];
-        ammoCounter.text = (currentWeapon.maxAmmo - shotsFired) + "/" + currentWeapon.maxAmmo;
-        shotLine = GetComponent<LineRenderer>();
+        ammoCounter.text = (currentWeapon.currentClip) + "/" + currentWeapon.maxAmmo;
         weapon = transform.Find("First Person Camera/Weapon");
     }
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && !isReloading && !isShooting && Player.ammo > 0)
+        if (Input.GetButton("Fire1") && !isReloading && !isShooting && Player.ammo > 0)
         {
             StartCoroutine(Shoot());
-        ammoCounter.text = (currentWeapon.maxAmmo - shotsFired) + "/" + currentWeapon.maxAmmo;
+            ammoCounter.text = (currentWeapon.currentClip) + "/" + currentWeapon.maxAmmo;
         }
 
         if (Input.GetButtonDown("Reload") && !isReloading && !isShooting)
@@ -37,21 +39,27 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Reload());
         }
 
-        beamVisibleTime -= Time.deltaTime;
-        if (beamVisibleTime <= 0.0f){
-            shotLine.enabled = false;
+        if (Input.GetKeyDown(KeyCode.Alpha1)){
+            weaponIndex = 0;
+            SwitchWeapon();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2)){
+            weaponIndex = 1;
+            SwitchWeapon();
         }
     }
 
     IEnumerator Shoot()
     {
-        if (shotsFired < currentWeapon.maxAmmo && Player.ammo > 0) {
-            shotsFired += 1;
+        if (currentWeapon.currentClip > 0 && Player.ammo > 0) {
+            Debug.Log(currentWeapon.maxAmmo);
+            currentWeapon.currentClip -= 1;
             isShooting = true;
             player_animator.SetBool("Shooting", true);
 
             ShootRay();
-            
+            StartCoroutine(SpawnBullet());
             // Wait for shoot cooldown
             yield return new WaitForSeconds(currentWeapon.fireRate);
 
@@ -60,8 +68,6 @@ public class PlayerController : MonoBehaviour
             Player.ammo -= 1;
         }
     }
-
-
 
     IEnumerator Reload()
     {
@@ -74,9 +80,8 @@ public class PlayerController : MonoBehaviour
         player_animator.SetBool("Reloading", false);
         isReloading = false;
 
-        Player.ammo = 5;
-        shotsFired = 0;
-        ammoCounter.text = (currentWeapon.maxAmmo - shotsFired) + "/" + currentWeapon.maxAmmo;
+        currentWeapon.currentClip = currentWeapon.maxAmmo;
+        ammoCounter.text = (currentWeapon.currentClip) + "/" + currentWeapon.maxAmmo;
     }
 
     void ShootRay(){
@@ -94,14 +99,31 @@ public class PlayerController : MonoBehaviour
                 stats.GetHit(currentWeapon.damage);
             }
         }
+    }
+    IEnumerator SpawnBullet(){
+        GameObject bullet = Instantiate(bulletPrefab, weapon.position, weapon.rotation);
+        float forceMagnitude = 200f;
+        Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+        Vector3 dir = bullet.transform.forward;
+        dir = -dir;
 
-        ShowRay(hit);
+        bulletRb.AddForce(dir * forceMagnitude, ForceMode.Impulse);
+        bulletRb.detectCollisions = false;
+
+        yield return new WaitForSeconds(1.0f);
+        Destroy(bullet);
     }
 
-    void ShowRay(RaycastHit hit){
-        shotLine.SetPosition(0, weapon.position);
-        shotLine.SetPosition(1, hit.point);
-        shotLine.enabled = true;
-        beamVisibleTime = 0.2f;
+    void SwitchWeapon()
+    {
+        currentWeapon = weapons[weaponIndex];
+        player_animator.SetInteger("weaponIndex", weaponIndex);
+        Transform vapen = transform.Find("First Person Camera/Weapon");
+        foreach (Transform child in vapen)
+        {
+            child.gameObject.SetActive(false);
+        }
+        vapen.GetChild(weaponIndex).gameObject.SetActive(true);
+
     }
 }

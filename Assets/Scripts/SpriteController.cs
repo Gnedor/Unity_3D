@@ -5,6 +5,7 @@ public class SpriteController : MonoBehaviour
 {
     private Camera _mainCamera;
     private EnemyScript mainScript;
+    public Quaternion targetRotation;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
