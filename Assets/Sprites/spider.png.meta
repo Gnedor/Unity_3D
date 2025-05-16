@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 29f4827e82f9d654892f15905b555bf5
+guid: e8f8e98a49b94c040bc53f486cbf3eae
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 33
+  spritePixelsToUnits: 300
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: scientist_0
+      name: spider_0
       rect:
         serializedVersion: 2
-        x: 29
-        y: 209
-        width: 31
-        height: 62
+        x: 115
+        y: 1610
+        width: 979
+        height: 588
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,20 +112,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d38ab1a35adbc7468f0ab99b529ca8f
-      internalID: -138031637
+      spriteID: 5f0b717d2a9bb9a4ba8e02190a9844f4
+      internalID: 326470860
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scientist_1
+      name: spider_1
+      rect:
+        serializedVersion: 2
+        x: 1415
+        y: 1572
+        width: 979
+        height: 626
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cfd0a618ebeeb6428035bf57e5b104f
+      internalID: 1099121164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spider_2
       rect:
         serializedVersion: 2
         x: 129
-        y: 209
-        width: 40
-        height: 62
+        y: 272
+        width: 965
+        height: 626
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +156,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a3e9146705e5f943ae1e5e0acf8ea5c
-      internalID: 1019003213
+      spriteID: 2f618797afc41714da3aa0ddce54c363
+      internalID: -1809511467
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scientist_2
+      name: spider_3
       rect:
         serializedVersion: 2
-        x: 29
-        y: 109
-        width: 41
-        height: 62
+        x: 1415
+        y: 310
+        width: 979
+        height: 588
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,52 +178,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fe8eda34e7e8a44583e1470c47f2830
-      internalID: -628131455
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scientist_3
-      rect:
-        serializedVersion: 2
-        x: 129
-        y: 109
-        width: 41
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 200c4dcb74cb3fc40a76386ad015fa5f
-      internalID: 338022472
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scientist_4
-      rect:
-        serializedVersion: 2
-        x: 29
-        y: 9
-        width: 31
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4b38894e002980e4f87e0eb426e2a970
-      internalID: 364363645
+      spriteID: 6f439ff3767da2c47b98282057406bf0
+      internalID: -77824577
       vertices: []
       indices: 
       edges: []
@@ -210,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3c4ee86f7bf950e4e9c64f01700ee365
+    spriteID: 3e2d9bc4a3e02f3429acc6dd4b88e526
     internalID: 0
     vertices: []
     indices: 
@@ -220,11 +198,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      scientist_0: -138031637
-      scientist_1: 1019003213
-      scientist_2: -628131455
-      scientist_3: 338022472
-      scientist_4: 364363645
+      spider_0: 326470860
+      spider_1: 1099121164
+      spider_2: -1809511467
+      spider_3: -77824577
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
