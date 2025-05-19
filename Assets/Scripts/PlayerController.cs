@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
         currentWeapon = weapons[weaponIndex];
         ammoCounter.text = (currentWeapon.currentClip) + "/" + currentWeapon.maxAmmo;
         weapon = transform.Find("First Person Camera/Weapon");
+        SwitchWeapon();
     }
     void Update()
     {
@@ -124,6 +125,7 @@ public class PlayerController : MonoBehaviour
             child.gameObject.SetActive(false);
         }
         vapen.GetChild(weaponIndex).gameObject.SetActive(true);
+        ammoCounter.text = (currentWeapon.currentClip) + "/" + currentWeapon.maxAmmo;
 
     }
 }

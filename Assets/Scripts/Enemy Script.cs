@@ -22,33 +22,52 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void GetHit(int damage){
+    public void GetHit(int damage)
+    {
         health -= damage;
         StartCoroutine(DamageFlash());
-        if (health <= 0){
+        if (health <= 0 && !dead)
+        {
             health = 0;
             Die();
+            dead = true;
         }
 
     }
 
-    void Die(){
+    void Die()
+    {
         rb.constraints = RigidbodyConstraints.None;
         speed = 0;
         dead = true;
         float forceMagnitude = 500f;
         Vector3 forceDirection = Player.rb.transform.forward;
-        Vector3 targetRotation = new Vector3(forceDirection.x, 0 , forceDirection.z);
+        Vector3 targetRotation = new Vector3(forceDirection.x, 0, forceDirection.z);
 
         rb.AddForce(targetRotation * forceMagnitude, ForceMode.Force);
+        StartCoroutine(Remove());
     }
 
-    IEnumerator DamageFlash(){
+    IEnumerator DamageFlash()
+    {
         sr.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         sr.color = Color.white;
+    }
+
+    IEnumerator Remove()
+    {
+        float alpha = 1.0f;
+        yield return new WaitForSeconds(0.5f);
+        for (int i = 0; i <= 5; i++)
+        {
+            sr.color = new Color(1.0f, 1.0f, 1.0f, alpha);
+            alpha -= 0.2f;
+            yield return new WaitForSeconds(0.1f);
+        }
+        Destroy(gameObject);
     }
 }
