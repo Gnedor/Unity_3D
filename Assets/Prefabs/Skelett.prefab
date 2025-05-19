@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbb04b933a1e614f94f2e2e10bcb580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &6793267364739037365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,6 +297,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af976f24a26f0f84bacd903940a6078b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 5
   speed: 1.5
   dead: 0
