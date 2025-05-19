@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 7312050413871537957}
   m_Layer: 0
   m_Name: Skelett
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbb04b933a1e614f94f2e2e10bcb580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &6793267364739037365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a85907fc41d7ebe4282af47b1a50f273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
 --- !u!65 &7163370315572888854
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -283,7 +283,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 16
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &7312050413871537957
 MonoBehaviour:
@@ -297,5 +297,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af976f24a26f0f84bacd903940a6078b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 5
   speed: 1.5
+  dead: 0

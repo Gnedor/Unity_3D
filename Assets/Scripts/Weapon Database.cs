@@ -6,4 +6,5 @@ public class WeaponDatabase : MonoBehaviour
     public float fireRate;
     public int maxAmmo;
     public float reloadTime;
+    public float currentClip;
 }
