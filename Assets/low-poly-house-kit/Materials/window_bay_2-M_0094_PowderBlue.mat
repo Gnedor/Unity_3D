@@ -1,6 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &-4405687414982918792
+<<<<<<< HEAD
+=======
+=======
+--- !u!114 &-4482288118240122060
+>>>>>>> Stashed changes
+>>>>>>> parent of 4a1d6e0 (Merge branch '2d-test' of https://github.com/Gnedor/Unity_3D into 2d-test)
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
