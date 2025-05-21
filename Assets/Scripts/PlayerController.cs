@@ -126,6 +126,5 @@ public class PlayerController : MonoBehaviour
         }
         vapen.GetChild(weaponIndex).gameObject.SetActive(true);
         ammoCounter.text = (currentWeapon.currentClip) + "/" + currentWeapon.maxAmmo;
-
     }
 }
