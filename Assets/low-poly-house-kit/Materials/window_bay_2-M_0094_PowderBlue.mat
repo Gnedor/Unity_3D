@@ -3,7 +3,7 @@
 <<<<<<< Updated upstream
 --- !u!114 &-4405687414982918792
 =======
---- !u!114 &-4482288118240122060
+--- !u!114 &-6484040114259401366
 >>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -34,8 +34,7 @@ Material:
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    RenderType: Opaque
+  stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
   m_LockedProperties: 
