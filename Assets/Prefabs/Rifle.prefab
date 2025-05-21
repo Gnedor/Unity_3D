@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ec4160172c948438f6f970069a57eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smooth: 0
-  swayMultiplier: 0
+  smooth: 8
+  swayMultiplier: 2
 --- !u!114 &4751980418754384856
 MonoBehaviour:
   m_ObjectHideFlags: 0
