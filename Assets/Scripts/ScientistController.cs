@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class ScientistController : MonoBehaviour
 {
+    public float speed = 1.5f;
     public float detectionRadius = 5f;
+
     private GameObject player;
     private Animator animator;
-    private EnemyScript enemyScript;
 
     void Start()
     {
-        enemyScript = GetComponent<EnemyScript>();
         player = GameObject.FindWithTag("Player");
         animator = GetComponent<Animator>();
     }
@@ -22,7 +22,7 @@ public class ScientistController : MonoBehaviour
         {
             // Move towards the player
             Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemyScript.speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
             // Set walking animation to true
             animator.SetBool("isWalking", true);

@@ -7,7 +7,6 @@ public class EnemyScript : MonoBehaviour
 {
     public int health;
     public float speed;
-    public float detectionsRadius;
     public bool dead = false;
     Rigidbody rb;
     private SpriteController spriteController;

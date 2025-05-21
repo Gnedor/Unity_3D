@@ -15,11 +15,10 @@ public class PlayerController : MonoBehaviour
     public List<WeaponDatabase> weapons = new List<WeaponDatabase>();
     private WeaponDatabase currentWeapon;
     private int weaponIndex = 0;
-    public TextMeshProUGUI ammoCounter, healthCounter;
+    public TextMeshProUGUI ammoCounter;
     Transform weapon;
+    float beamVisibleTime;
     public GameObject bulletPrefab;
-    private bool weapon2Unlock = false, weapon3Unlock = false;
-    private float shieldTimer = 0f;
 
     void Start()
     {
@@ -41,41 +40,20 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Reload());
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
+        if (Input.GetKeyDown(KeyCode.Alpha1)){
             weaponIndex = 0;
             SwitchWeapon();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            if (weapon2Unlock)
-            {
-                weaponIndex = 1;
-                SwitchWeapon();
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            if (weapon3Unlock)
-            {
-                weaponIndex = 2;
-                SwitchWeapon();
-            }
-        }
-
-        if (shieldTimer > 0f)
-        {
-            shieldTimer -= Time.deltaTime;
-            Debug.Log(shieldTimer);
+        if (Input.GetKeyDown(KeyCode.Alpha2)){
+            weaponIndex = 1;
+            SwitchWeapon();
         }
     }
 
     IEnumerator Shoot()
     {
-        if (currentWeapon.currentClip > 0 && Player.ammo > 0)
-        {
+        if (currentWeapon.currentClip > 0 && Player.ammo > 0) {
             Debug.Log(currentWeapon.maxAmmo);
             currentWeapon.currentClip -= 1;
             isShooting = true;
@@ -96,10 +74,10 @@ public class PlayerController : MonoBehaviour
     {
         isReloading = true;
         player_animator.SetBool("Reloading", true);
-
+        
         // Wait for reload animation time
         yield return new WaitForSeconds(currentWeapon.reloadTime);
-
+        
         player_animator.SetBool("Reloading", false);
         isReloading = false;
 
@@ -107,26 +85,23 @@ public class PlayerController : MonoBehaviour
         ammoCounter.text = (currentWeapon.currentClip) + "/" + currentWeapon.maxAmmo;
     }
 
-    void ShootRay()
-    {
-        Ray myRay = Camera.main.ScreenPointToRay(new Vector3(Camera.main.pixelWidth / 2,
-        Camera.main.pixelHeight / 2, 0f));
+    void ShootRay(){
+        Ray myRay = Camera.main.ScreenPointToRay(new Vector3(Camera.main.pixelWidth/2,
+        Camera.main.pixelHeight/2, 0f));
         RaycastHit hit;
 
-        if (Physics.Raycast(myRay, out hit))
+        if(Physics.Raycast(myRay, out hit))
         {
             Debug.Log("Hit: " + hit.collider.tag);
-            if (hit.collider.tag == "Enemy")
-            {
+            if (hit.collider.tag == "Enemy"){
                 GameObject hitObject = hit.collider.gameObject;
                 EnemyScript stats = hitObject.GetComponent<EnemyScript>();
-
+                
                 stats.GetHit(currentWeapon.damage);
             }
         }
     }
-    IEnumerator SpawnBullet()
-    {
+    IEnumerator SpawnBullet(){
         GameObject bullet = Instantiate(bulletPrefab, weapon.position, weapon.rotation);
         float forceMagnitude = 200f;
         Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
@@ -151,40 +126,5 @@ public class PlayerController : MonoBehaviour
         }
         vapen.GetChild(weaponIndex).gameObject.SetActive(true);
         ammoCounter.text = (currentWeapon.currentClip) + "/" + currentWeapon.maxAmmo;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "EnemyBullet")
-        {
-            TakeDamage();
-        }
-
-        if (other.tag == "Uzi")
-        {
-            weapon2Unlock = true;
-            GameObject parent = other.gameObject;
-            Destroy(parent);
-            weaponIndex = 1;
-            SwitchWeapon();
-        }
-        if (other.tag == "Rifle")
-        {
-            weapon3Unlock = true;
-            GameObject parent = other.gameObject;
-            Destroy(parent);
-            weaponIndex = 2;
-            SwitchWeapon();
-        }
-    }
-
-    public void TakeDamage()
-    {
-        if (shieldTimer <= 0)
-        {
-            Player.health -= 1;
-            healthCounter.text = "HP: " + (Player.health) + "/3";
-            shieldTimer = 3f;
-        }
     }
 }
