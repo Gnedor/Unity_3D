@@ -15,11 +15,11 @@ public class PlayerController : MonoBehaviour
     public List<WeaponDatabase> weapons = new List<WeaponDatabase>();
     private WeaponDatabase currentWeapon;
     private int weaponIndex = 0;
-    public TextMeshProUGUI ammoCounter;
+    public TextMeshProUGUI ammoCounter, healthCounter;
     Transform weapon;
-    float beamVisibleTime;
     public GameObject bulletPrefab;
     private bool weapon2Unlock = false, weapon3Unlock = false;
+    private float shieldTimer = 0f;
 
     void Start()
     {
@@ -63,6 +63,12 @@ public class PlayerController : MonoBehaviour
                 weaponIndex = 2;
                 SwitchWeapon();
             }
+        }
+
+        if (shieldTimer > 0f)
+        {
+            shieldTimer -= Time.deltaTime;
+            Debug.Log(shieldTimer);
         }
     }
 
@@ -149,11 +155,36 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "EnemyBullet")
+        {
+            TakeDamage();
+        }
+
         if (other.tag == "Uzi")
         {
             weapon2Unlock = true;
             GameObject parent = other.gameObject;
             Destroy(parent);
-        } 
+            weaponIndex = 1;
+            SwitchWeapon();
+        }
+        if (other.tag == "Rifle")
+        {
+            weapon3Unlock = true;
+            GameObject parent = other.gameObject;
+            Destroy(parent);
+            weaponIndex = 2;
+            SwitchWeapon();
+        }
+    }
+
+    public void TakeDamage()
+    {
+        if (shieldTimer <= 0)
+        {
+            Player.health -= 1;
+            healthCounter.text = "HP: " + (Player.health) + "/3";
+            shieldTimer = 3f;
+        }
     }
 }

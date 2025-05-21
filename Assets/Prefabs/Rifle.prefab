@@ -61,10 +61,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  fireRate: 1
+  fireRate: 0.1
   maxAmmo: 30
   reloadTime: 0.5
-  currentClip: 0
+  currentClip: 25
 --- !u!1001 &6848883515392483586
 PrefabInstance:
   m_ObjectHideFlags: 0
