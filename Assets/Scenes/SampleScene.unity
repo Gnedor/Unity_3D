@@ -9625,7 +9625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1829597508155286, guid: 7359baf27e84aa44cafac3788c8be0f1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4053999043310118, guid: 7359baf27e84aa44cafac3788c8be0f1, type: 3}
       propertyPath: m_LocalScale.x
@@ -10951,8 +10951,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.27796993, y: 0.39667362, z: 1.2352383}
-  m_Center: {x: 0.116761446, y: -0.04949187, z: -0.08104658}
+  m_Size: {x: 0.51111513, y: 0.44821832, z: 1.2352383}
+  m_Center: {x: 0.2333337, y: -0.07526413, z: -0.081046574}
 --- !u!4 &1428275577 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 2d57b88514f5126448062a8c852b2b5b, type: 3}
@@ -13229,6 +13229,7 @@ MonoBehaviour:
   - {fileID: 1455129242}
   - {fileID: 8978170301101682155, guid: 2f92f1d5c2819e948a82415c6b872931, type: 3}
   - {fileID: 4751980418754384856, guid: 36a2b08e9e38b154bab50564c9e6f52d, type: 3}
+  - {fileID: 4389131039423007825, guid: 7359baf27e84aa44cafac3788c8be0f1, type: 3}
   ammoCounter: {fileID: 1664701397}
   healthCounter: {fileID: 1449624913}
   bulletPrefab: {fileID: 6619041428196884179, guid: 4d17927e7ecf9b54788c7a30a819358b, type: 3}
@@ -16005,7 +16006,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3909719688433007430, guid: 51b439b06c711ac4eb3ae09617a44642, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3915176441721789266, guid: 51b439b06c711ac4eb3ae09617a44642, type: 3}
       propertyPath: m_ConstrainProportionsScale
