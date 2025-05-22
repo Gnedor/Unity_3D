@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ad173799b94d4142b8e5d0eaed0353a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 5
+  detectionRadius: 25
 --- !u!114 &4071863730303473520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,8 +155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   speed: 1
-  detectionsRadius: 0
   dead: 0
+  follow: 0
 --- !u!65 &4973207645704310074
 BoxCollider:
   m_ObjectHideFlags: 0

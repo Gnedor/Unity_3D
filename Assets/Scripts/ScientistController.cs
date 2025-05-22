@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ScientistController : MonoBehaviour
 {
-    public float detectionRadius = 5f;
+    public float detectionRadius;
     private GameObject player;
     private Animator animator;
     private EnemyScript enemyScript;
@@ -18,7 +18,12 @@ public class ScientistController : MonoBehaviour
     {
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
 
-        if (distanceToPlayer <= detectionRadius)
+        if (!enemyScript.follow && distanceToPlayer <= detectionRadius)
+        {
+            enemyScript.follow = true;
+        }
+
+        if (enemyScript.follow)
         {
             // Move towards the player
             Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);

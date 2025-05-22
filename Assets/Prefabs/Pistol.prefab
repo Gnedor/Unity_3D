@@ -146,7 +146,7 @@ MonoBehaviour:
   fireRate: 0.4
   maxAmmo: 5
   reloadTime: 0.5
-  currentClip: 0
+  currentClip: 5
 --- !u!4 &3915176441721789266 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4952727429218122, guid: 6f1a7354265853f44b0ed5e2e43676ad, type: 3}

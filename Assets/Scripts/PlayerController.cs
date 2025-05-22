@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI ammoCounter, healthCounter;
     Transform weapon;
     public GameObject bulletPrefab;
-    private bool weapon2Unlock = false, weapon3Unlock = false;
+    private bool weapon2Unlock = false, weapon3Unlock = false, weapon4Unlock = false;
     private float shieldTimer = 0f;
 
     void Start()
@@ -61,6 +61,15 @@ public class PlayerController : MonoBehaviour
             if (weapon3Unlock)
             {
                 weaponIndex = 2;
+                SwitchWeapon();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            if (weapon4Unlock)
+            {
+                weaponIndex = 3;
                 SwitchWeapon();
             }
         }
@@ -174,6 +183,14 @@ public class PlayerController : MonoBehaviour
             GameObject parent = other.gameObject;
             Destroy(parent);
             weaponIndex = 2;
+            SwitchWeapon();
+        }
+        if (other.tag == "Marksman")
+        {
+            weapon4Unlock = true;
+            GameObject parent = other.gameObject;
+            Destroy(parent);
+            weaponIndex = 3;
             SwitchWeapon();
         }
     }

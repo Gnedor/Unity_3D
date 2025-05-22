@@ -8,6 +8,7 @@ TagManager:
   - Uzi
   - Rifle
   - EnemyBullet
+  - Marksman
   layers:
   - Default
   - TransparentFX

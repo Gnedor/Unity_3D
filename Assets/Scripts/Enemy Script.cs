@@ -7,11 +7,11 @@ public class EnemyScript : MonoBehaviour
 {
     public int health;
     public float speed;
-    public float detectionsRadius;
     public bool dead = false;
     Rigidbody rb;
     private SpriteController spriteController;
     private SpriteRenderer sr;
+    public bool follow;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,6 +30,7 @@ public class EnemyScript : MonoBehaviour
     {
         health -= damage;
         StartCoroutine(DamageFlash());
+        follow = true;
         if (health <= 0 && !dead)
         {
             health = 0;
