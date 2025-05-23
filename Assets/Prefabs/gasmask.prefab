@@ -137,11 +137,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51b99fb014161b9458d860f1bc404cab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
-  detectionRadius: 5
+  detectionRadius: 30
   shootingRadius: 10
   fireRate: 10
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 5079439225971207374, guid: 67e91950f1e7f8d4b9af22f1c696553d, type: 3}
   firePoint: {fileID: 8750609819105707105}
   bulletSpeed: 10
   maxAmmoCount: 30
@@ -193,10 +192,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af976f24a26f0f84bacd903940a6078b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 7
   speed: 1.5
-  detectionsRadius: 0
   dead: 0
+  follow: 0
 --- !u!65 &5078052164991067079
 BoxCollider:
   m_ObjectHideFlags: 0

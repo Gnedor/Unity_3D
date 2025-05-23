@@ -1,7 +1,6 @@
 using UnityEngine;
 public class GasmaskController : MonoBehaviour
 {
-    public float speed = 1.5f;
     public float detectionRadius = 5f;
     public float shootingRadius = 2f;
     public float fireRate = 1.5f; // Time in seconds between shots
@@ -18,6 +17,7 @@ public class GasmaskController : MonoBehaviour
     private bool isFiringSequence = false;
     private bool isReloading = false;
     private int currentAmmo;
+    private EnemyScript enemyScript;
 
     // Animation event names
     private const string ANIM_TRIGGER_SHOOT = "shoot";
@@ -32,6 +32,7 @@ public class GasmaskController : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         animator = GetComponent<Animator>();
         currentAmmo = maxAmmoCount; // Start with a full clip
+        enemyScript = GetComponent<EnemyScript>();
     }
 
     void Update()
@@ -64,10 +65,12 @@ public class GasmaskController : MonoBehaviour
                 }
             }
         }
-        else if (distanceToPlayer <= detectionRadius)
+
+        else if (distanceToPlayer <= detectionRadius || enemyScript.follow)
         {
+            enemyScript.follow = true;
             Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemyScript.speed * Time.deltaTime);
             animator.SetBool(ANIM_BOOL_WALKING, true);
             animator.SetBool(ANIM_BOOL_IN_RANGE, false);
             FacePlayer();
@@ -136,12 +139,14 @@ public class GasmaskController : MonoBehaviour
             }
 
             // Optional: Flip bullet sprite if needed based on direction
+            
             if (direction.x < 0)
             {
                 Vector3 scale = bullet.transform.localScale;
                 scale.x = -Mathf.Abs(scale.x);
                 bullet.transform.localScale = scale;
             }
+            
 
             // Decrease ammo count
             currentAmmo--;
