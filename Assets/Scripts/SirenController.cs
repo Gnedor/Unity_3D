@@ -1,7 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 public class SirenController : MonoBehaviour
 {
-    public float speed = 1.5f;
     public float detectionRadius = 5f;
 
     // Audio components
@@ -11,9 +11,12 @@ public class SirenController : MonoBehaviour
 
     private GameObject player;
     private Animator animator;
+    private EnemyScript enemyScript;
+    public List<GameObject> enemies = new List<GameObject>();
 
     void Start()
     {
+        enemyScript = GetComponent<EnemyScript>();
         player = GameObject.FindWithTag("Player");
         animator = GetComponent<Animator>();
 
@@ -38,7 +41,7 @@ public class SirenController : MonoBehaviour
         {
             // Move towards the player
             Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemyScript.speed * Time.deltaTime);
 
             // Set walking animation to true
             animator.SetBool("isAttacking", true);
@@ -49,6 +52,7 @@ public class SirenController : MonoBehaviour
                 audioSource.Play();
                 isPlayingSound = true;
             }
+            SummonEnemies();
         }
         else
         {
@@ -61,6 +65,16 @@ public class SirenController : MonoBehaviour
                 audioSource.Stop();
                 isPlayingSound = false;
             }
+        }
+    }
+
+    //Siren kan vara den sista bossen som spawnar massa andra fiender runt omkring honnom
+    void SummonEnemies()
+    {
+        for (int i = 0; i <= 6; i++)
+        {
+            int random = UnityEngine.Random.Range(0, 4);
+            GameObject newEnemy = Instantiate(enemies[random], transform.position, transform.rotation);
         }
     }
 }
