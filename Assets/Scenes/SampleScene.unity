@@ -9709,6 +9709,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5885692576047242505, guid: da13792395d1a3249871cf3c91043054, type: 3}
+      propertyPath: health
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 6724834177965914777, guid: da13792395d1a3249871cf3c91043054, type: 3}
       propertyPath: m_Name
       value: siren (1)

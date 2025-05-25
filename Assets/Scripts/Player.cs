@@ -4,7 +4,7 @@ using TMPro;
 public class Player : MonoBehaviour
 {
     public static int ammo = 100000000;
-    public static int health = 3;
+    public static int health = 10;
     public GameObject weapon;
     public static Rigidbody rb;
 

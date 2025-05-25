@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public class SirenController : MonoBehaviour
@@ -13,6 +14,8 @@ public class SirenController : MonoBehaviour
     private Animator animator;
     private EnemyScript enemyScript;
     public List<GameObject> enemies = new List<GameObject>();
+    public float summonTimer = 20.0f;
+    private bool spawning = false;
 
     void Start()
     {
@@ -37,44 +40,69 @@ public class SirenController : MonoBehaviour
     void Update()
     {
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-        if (distanceToPlayer <= detectionRadius)
+        if ((distanceToPlayer <= detectionRadius || enemyScript.follow) && !spawning)
         {
-            // Move towards the player
+            enemyScript.follow = true;
+
             Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemyScript.speed * Time.deltaTime);
 
-            // Set walking animation to true
-            animator.SetBool("isAttacking", true);
+            animator.SetBool("follow", true);
 
-            // Play sound if not already playing
             if (!isPlayingSound)
             {
                 audioSource.Play();
                 isPlayingSound = true;
             }
-            SummonEnemies();
         }
         else
         {
-            // Player is out of range, stop walking
-            animator.SetBool("isAttacking", false);
+            animator.SetBool("follow", false);
 
-            // Stop sound if it's playing
             if (isPlayingSound)
             {
                 audioSource.Stop();
                 isPlayingSound = false;
             }
         }
+
+        if (enemyScript.follow)
+        {
+            if (summonTimer > 0)
+            {
+                summonTimer -= Time.deltaTime;
+            }
+            else if (!spawning)
+            {
+                StartCoroutine(SummonEnemies());
+            }
+        }
     }
 
-    //Siren kan vara den sista bossen som spawnar massa andra fiender runt omkring honnom
-    void SummonEnemies()
+    IEnumerator SummonEnemies()
     {
+        spawning = true;
+        animator.SetBool("isAttacking", true);
+
+        if (!isPlayingSound)
+        {
+            audioSource.Play();
+            isPlayingSound = true;
+        }
+        yield return new WaitForSeconds(3);
+
         for (int i = 0; i <= 6; i++)
         {
             int random = UnityEngine.Random.Range(0, 4);
-            GameObject newEnemy = Instantiate(enemies[random], transform.position, transform.rotation);
+            float randomPosX = UnityEngine.Random.Range(-10, 10);
+            float randomPosZ = UnityEngine.Random.Range(-10, 10);
+            Instantiate(enemies[random], new Vector3(transform.position.x + randomPosX, 10, transform.position.z + randomPosZ), transform.rotation);
         }
+
+        animator.SetBool("isAttacking", false);
+        audioSource.Stop();
+        isPlayingSound = false;
+        summonTimer = 20.0f;
+        spawning = false;
     }
 }
