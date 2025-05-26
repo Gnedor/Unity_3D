@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ScientistController : MonoBehaviour
@@ -6,12 +7,15 @@ public class ScientistController : MonoBehaviour
     private GameObject player;
     private Animator animator;
     private EnemyScript enemyScript;
+    private float attackRadius = 3f;
+    private PlayerController playerController;
 
     void Start()
     {
         enemyScript = GetComponent<EnemyScript>();
         player = GameObject.FindWithTag("Player");
         animator = GetComponent<Animator>();
+        playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
 
     void Update()
@@ -36,6 +40,26 @@ public class ScientistController : MonoBehaviour
         {
             // Player is out of range, stop walking
             animator.SetBool("isWalking", false);
+        }
+
+        if (distanceToPlayer <= attackRadius)
+        {
+            animator.SetBool("isAttacking", true);
+            StartCoroutine(Attack());
+        }
+        else
+        {
+            animator.SetBool("isAttacking", false);
+        }
+    }
+
+    IEnumerator Attack()
+    {
+        yield return new WaitForSeconds(0.5f);
+        float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+        if (distanceToPlayer <= 5f)
+        {
+            playerController.TakeDamage();
         }
     }
 }
