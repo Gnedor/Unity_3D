@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
+using TMPro;
 using UnityEngine;
 public class SirenController : MonoBehaviour
 {
@@ -16,12 +18,18 @@ public class SirenController : MonoBehaviour
     public List<GameObject> enemies = new List<GameObject>();
     public float summonTimer = 20.0f;
     private bool spawning = false;
+    public TextMeshProUGUI bossText;
+    public GameObject bossHealthBar;
+    private GameObject bar;
+    private RectTransform hBar;
+    private int maxHealth;
 
     void Start()
     {
         enemyScript = GetComponent<EnemyScript>();
         player = GameObject.FindWithTag("Player");
         animator = GetComponent<Animator>();
+        maxHealth = enemyScript.health;
 
         // Initialize audio source
         audioSource = GetComponent<AudioSource>();
@@ -35,6 +43,8 @@ public class SirenController : MonoBehaviour
         audioSource.clip = sirenSound;
         audioSource.loop = true; // Loop the sound while attacking
         audioSource.playOnAwake = false;
+        bar = bossHealthBar.transform.GetChild(0).gameObject;
+        hBar = bar.GetComponent<RectTransform>();
     }
 
     void Update()
@@ -42,12 +52,12 @@ public class SirenController : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
         if ((distanceToPlayer <= detectionRadius || enemyScript.follow) && !spawning)
         {
+            bossText.text = "Siren";
+            bossHealthBar.SetActive(true);
             enemyScript.follow = true;
 
             Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemyScript.speed * Time.deltaTime);
-
-            animator.SetBool("follow", true);
 
             if (!isPlayingSound)
             {
@@ -57,8 +67,6 @@ public class SirenController : MonoBehaviour
         }
         else
         {
-            animator.SetBool("follow", false);
-
             if (isPlayingSound)
             {
                 audioSource.Stop();
@@ -77,6 +85,9 @@ public class SirenController : MonoBehaviour
                 StartCoroutine(SummonEnemies());
             }
         }
+        float width = (float)enemyScript.health / (float)maxHealth * 300f;
+        hBar.sizeDelta = new Vector2(width, 35f);
+
     }
 
     IEnumerator SummonEnemies()

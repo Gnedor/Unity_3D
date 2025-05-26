@@ -200,7 +200,7 @@ public class PlayerController : MonoBehaviour
         if (shieldTimer <= 0)
         {
             Player.health -= 1;
-            healthCounter.text = "HP: " + (Player.health) + "/3";
+            healthCounter.text = "HP: " + (Player.health) + "/10";
             shieldTimer = 3f;
         }
     }

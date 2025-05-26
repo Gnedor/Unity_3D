@@ -134,6 +134,7 @@ MonoBehaviour:
   - {fileID: 5390702455326389116, guid: 019438022d852a34eae99fbc7d1e7078, type: 3}
   - {fileID: 3801631665097782638, guid: 6f7b09a030994b14ab5f6dede3de416b, type: 3}
   - {fileID: 5252443415371977630, guid: c4f1611a790b0ce47be1008af384009a, type: 3}
+  summonTimer: 20
 --- !u!114 &56053249633264949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af976f24a26f0f84bacd903940a6078b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 150
   speed: 1
   dead: 0
   follow: 0
