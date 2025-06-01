@@ -2,24 +2,33 @@ using System.Collections; // Needed for IEnumerator
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEditor.Callbacks;
 using UnityEngine.Animations;
 using System;
+using Microsoft.Unity.VisualStudio.Editor;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public AudioClip shoot1, shoot2, shoot3, shoot4;
+    private AudioSource audioSource;
+
     public Animator player_animator;
     private bool isReloading = false;
     private bool isShooting = false;
     public List<WeaponDatabase> weapons = new List<WeaponDatabase>();
     private WeaponDatabase currentWeapon;
     private int weaponIndex = 0;
-    public TextMeshProUGUI ammoCounter, healthCounter;
+    public TextMeshProUGUI ammoCounter, healthCounter, deathText;
+    public UnityEngine.UI.Image darkenScreen;
     Transform weapon;
     public GameObject bulletPrefab;
     private bool weapon2Unlock = false, weapon3Unlock = false, weapon4Unlock = false;
     private float shieldTimer = 0f;
+    private FirstPersonMovement movement;
+    private bool dead = false;
 
     void Start()
     {
@@ -77,7 +86,6 @@ public class PlayerController : MonoBehaviour
         if (shieldTimer > 0f)
         {
             shieldTimer -= Time.deltaTime;
-            Debug.Log(shieldTimer);
         }
     }
 
@@ -129,6 +137,7 @@ public class PlayerController : MonoBehaviour
             {
                 GameObject hitObject = hit.collider.gameObject;
                 EnemyScript stats = hitObject.GetComponent<EnemyScript>();
+                movement = GetComponent<FirstPersonMovement>();
 
                 stats.GetHit(currentWeapon.damage);
             }
@@ -197,11 +206,45 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage()
     {
-        if (shieldTimer <= 0)
+        if (Player.health <= 0 && !dead)
+        {
+            dead = true;
+            StartCoroutine(Die());
+            StartCoroutine(FadeScreen());
+        }
+
+        else if (shieldTimer <= 0)
         {
             Player.health -= 1;
             healthCounter.text = "HP: " + (Player.health) + "/10";
             shieldTimer = 3f;
+        }
+    }
+
+    IEnumerator Die()
+    {
+        movement.speed = 0;
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("SampleScene");
+
+        weaponIndex = 0;
+        Player.health = 10;
+        SwitchWeapon();
+        weapon2Unlock = false;
+        weapon3Unlock = false;
+        weapon4Unlock = false;
+        dead = false;
+    }
+
+    IEnumerator FadeScreen()
+    {
+        float fade = 0f;
+        while (fade < 1)
+        {
+            fade += 0.05f;
+            darkenScreen.color = new Color(0, 0, 0, fade);
+            deathText.color = new Color(1, 0, 0, fade);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }
