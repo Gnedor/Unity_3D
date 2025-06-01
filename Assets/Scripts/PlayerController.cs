@@ -12,8 +12,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public AudioClip shoot1, shoot2, shoot3, shoot4;
-    private AudioSource audioSource;
+    public AudioSource[] soundEffects;
 
     public Animator player_animator;
     private bool isReloading = false;
@@ -93,6 +92,7 @@ public class PlayerController : MonoBehaviour
     {
         if (currentWeapon.currentClip > 0 && Player.ammo > 0)
         {
+            PlaySound(weaponIndex);
             Debug.Log(currentWeapon.maxAmmo);
             currentWeapon.currentClip -= 1;
             isShooting = true;
@@ -111,6 +111,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Reload()
     {
+        PlaySound(4);
+
         isReloading = true;
         player_animator.SetBool("Reloading", true);
 
@@ -215,6 +217,7 @@ public class PlayerController : MonoBehaviour
 
         else if (shieldTimer <= 0)
         {
+            PlaySound(5);
             Player.health -= 1;
             healthCounter.text = "HP: " + (Player.health) + "/10";
             shieldTimer = 3f;
@@ -223,7 +226,6 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Die()
     {
-        movement.speed = 0;
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene("SampleScene");
 
@@ -246,5 +248,10 @@ public class PlayerController : MonoBehaviour
             deathText.color = new Color(1, 0, 0, fade);
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    void PlaySound(int soundIndex)
+    {
+        soundEffects[soundIndex].Play();
     }
 }

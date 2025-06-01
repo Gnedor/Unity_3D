@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 public class SirenController : MonoBehaviour
 {
-    public float detectionRadius = 5f;
+    public float detectionRadius = 40f;
 
     // Audio components
     public AudioClip sirenSound;
@@ -16,7 +16,7 @@ public class SirenController : MonoBehaviour
     private Animator animator;
     private EnemyScript enemyScript;
     public List<GameObject> enemies = new List<GameObject>();
-    public float summonTimer = 20.0f;
+    public float summonTimer = 0.0f;
     private bool spawning = false;
     public TextMeshProUGUI bossText;
     public GameObject bossHealthBar;
@@ -76,7 +76,7 @@ public class SirenController : MonoBehaviour
 
         if (enemyScript.follow)
         {
-            if (summonTimer > 0)
+            if (summonTimer >= 0)
             {
                 summonTimer -= Time.deltaTime;
             }

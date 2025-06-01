@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51b99fb014161b9458d860f1bc404cab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootSound: {fileID: 8300000, guid: 8a0ba1cd5aa3aff488df3d7fcfdf6c38, type: 3}
   detectionRadius: 30
   shootingRadius: 10
   fireRate: 10

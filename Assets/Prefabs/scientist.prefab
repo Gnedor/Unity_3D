@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ad173799b94d4142b8e5d0eaed0353a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knifeSound: {fileID: 8300000, guid: c098cc48160d55a4bbced96e1dd27c04, type: 3}
   detectionRadius: 25
 --- !u!114 &4071863730303473520
 MonoBehaviour:
@@ -154,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  speed: 1
+  speed: 5
   dead: 0
   follow: 0
 --- !u!65 &4973207645704310074

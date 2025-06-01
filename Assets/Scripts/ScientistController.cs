@@ -3,19 +3,32 @@ using UnityEngine;
 
 public class ScientistController : MonoBehaviour
 {
+    public AudioClip knifeSound;
+    private AudioSource audioSource;
     public float detectionRadius;
     private GameObject player;
     private Animator animator;
     private EnemyScript enemyScript;
     private float attackRadius = 3f;
     private PlayerController playerController;
+    private bool canAttack = true;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            // Add AudioSource component if it doesn't exist
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
         enemyScript = GetComponent<EnemyScript>();
         player = GameObject.FindWithTag("Player");
         animator = GetComponent<Animator>();
         playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+
+        audioSource.clip = knifeSound;
+        audioSource.playOnAwake = false;
     }
 
     void Update()
@@ -44,8 +57,14 @@ public class ScientistController : MonoBehaviour
 
         if (distanceToPlayer <= attackRadius)
         {
-            animator.SetBool("isAttacking", true);
-            StartCoroutine(Attack());
+            if (canAttack)
+            {
+                canAttack = false;
+                audioSource.Play();
+                animator.SetBool("isAttacking", true);
+                StartCoroutine(Attack());
+            }
+
         }
         else
         {
@@ -61,5 +80,6 @@ public class ScientistController : MonoBehaviour
         {
             playerController.TakeDamage();
         }
+        canAttack = true;
     }
 }

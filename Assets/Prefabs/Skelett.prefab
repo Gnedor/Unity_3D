@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a85907fc41d7ebe4282af47b1a50f273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knifeSound: {fileID: 8300000, guid: c098cc48160d55a4bbced96e1dd27c04, type: 3}
 --- !u!65 &7163370315572888854
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -126,6 +127,7 @@ MonoBehaviour:
   health: 10
   speed: 3
   dead: 0
+  follow: 0
 --- !u!212 &6872671324090540768
 SpriteRenderer:
   m_ObjectHideFlags: 0

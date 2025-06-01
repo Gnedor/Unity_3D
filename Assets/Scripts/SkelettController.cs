@@ -4,39 +4,55 @@ using UnityEngine;
 
 public class SkelettController : MonoBehaviour
 {
+    public AudioClip knifeSound;
+    private AudioSource audioSource;
     private GameObject player;
     private EnemyScript enemyScript;
     private float detectionRadius = 20f;
     private float attackRadius = 3f;
     private Animator anim;
     private PlayerController playerController;
-    private bool follow;
-    private int startHealth;
+    private bool canAttack = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            // Add AudioSource component if it doesn't exist
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        audioSource.clip = knifeSound;
+        audioSource.playOnAwake = false;
+
         enemyScript = GetComponent<EnemyScript>();
         player = GameObject.FindWithTag("Player");
         anim = GetComponent<Animator>();
         playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        startHealth = enemyScript.health;
     }
 
     // Update is called once per frame
     void Update()
     {
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-        if ((!follow && distanceToPlayer <= detectionRadius) || enemyScript.health < startHealth)
+        if ((!enemyScript.follow && distanceToPlayer <= detectionRadius))
         {
-            follow = true;
+            enemyScript.follow = true;
         }
 
         if (distanceToPlayer <= attackRadius)
         {
-            StartCoroutine(Attack());
+            if (canAttack)
+            {
+                canAttack = false;
+                audioSource.Play();
+                StartCoroutine(Attack());
+            }
+
         }
-        if (follow)
+        if (enemyScript.follow)
         {
             Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemyScript.speed * Time.deltaTime);
@@ -47,11 +63,13 @@ public class SkelettController : MonoBehaviour
     IEnumerator Attack()
     {
         anim.SetTrigger("Attack");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
+
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
         if (distanceToPlayer <= 5f)
         {
             playerController.TakeDamage();
         }
+        canAttack = true;
     }
 }

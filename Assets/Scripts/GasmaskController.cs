@@ -1,6 +1,8 @@
 using UnityEngine;
 public class GasmaskController : MonoBehaviour
 {
+    public AudioClip shootSound;
+    private AudioSource audioSource;
     public float detectionRadius = 5f;
     public float shootingRadius = 2f;
     public float fireRate = 1.5f; // Time in seconds between shots
@@ -29,6 +31,13 @@ public class GasmaskController : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            // Add AudioSource component if it doesn't exist
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
         player = GameObject.FindWithTag("Player");
         animator = GetComponent<Animator>();
         currentAmmo = maxAmmoCount; // Start with a full clip
@@ -123,8 +132,10 @@ public class GasmaskController : MonoBehaviour
         if (!isReadyToFire || currentAmmo <= 0)
             return;
 
+       
         if (bulletPrefab != null && firePoint != null)
         {
+            audioSource.PlayOneShot(shootSound);
             // Calculate direction to the player
             Vector3 direction = (player.transform.position - firePoint.position).normalized;
 
@@ -139,20 +150,19 @@ public class GasmaskController : MonoBehaviour
             }
 
             // Optional: Flip bullet sprite if needed based on direction
-            
+
             if (direction.x < 0)
             {
                 Vector3 scale = bullet.transform.localScale;
                 scale.x = -Mathf.Abs(scale.x);
                 bullet.transform.localScale = scale;
             }
-            
+
 
             // Decrease ammo count
             currentAmmo--;
 
             // Debug ammo count
-            Debug.Log("Bullets remaining: " + currentAmmo);
         }
 
         // Reset for the next firing sequence
@@ -186,9 +196,6 @@ public class GasmaskController : MonoBehaviour
 
         isReloading = true;
         animator.SetTrigger(ANIM_TRIGGER_RELOAD);
-
-        // We'll rely on the animation event to complete the reload
-        Debug.Log("Reloading started...");
     }
 
     // Called by animation event at the end of the reload animation
@@ -197,7 +204,6 @@ public class GasmaskController : MonoBehaviour
         currentAmmo = maxAmmoCount;
         isReloading = false;
         nextFireTime = Time.time; // Allow firing immediately after reload
-        Debug.Log("Reload complete! Ammo refilled to " + currentAmmo);
 
         // If still in range, start firing again
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
